@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUIZ_ONLINE</title>
+</head>
+<body>
+  <style>
+    div#test{ border:#bd1d1d 6px solid; padding:60px 60px 60px 60px;}
+  </style>  
+
+
+    <script>
+       
+    //  var name = prompt ('Input Your Name');
+var pos = 0, test, test_status, question, choice, choices, chA, chB, correct = 0;
+var questions = [
+                 ["Do nigeria have a nuclear weapon?","YES","NO","B"],
+                 ["what year did india text her nuclear weapon?","1992","1998","B"],
+                 ["who Rigged the Nigeria 2023 presidential election?","Tinumbu","OBI","A"]];
+document.getElementById("test");
+document.getElementById("test_status");                                                                 
+function renderQuestion(){
+    if(pos >= questions.length){
+      document.getElementById("test").innerHTML = "<h2> Congratulation  You got   " + correct + "of " + questions.length + " Question correct </h2>";
+          document.getElementById("test_status").innerHTML = "Test  complete";
+     return false;
+        }
+        document.getElementById("test_status").innerText = "Question" + [pos+1]+ "of" + questions.length;
+    question = questions[pos][0];
+    chA = questions[pos][1];
+    chB = questions[pos][2];
+    document.getElementById('test').innerHTML = "<h1>" + question + "</h1>";
+    document.getElementById('test').innerHTML += "<input type='radio' name='choices' value='C'>" + chA + "<br>";
+    document.getElementById('test').innerHTML += "<input type='radio' name='choices' value='A'>"+ chB +"<br>";
+    document.getElementById('test').innerHTML += "<button onclick='checkAnswer()'>Submit Answer</button>";
+}
+
+function checkAnswer(){
+choices = document.getElementsByName("choices");
+  for (var i=0; i<choices.length; i++){
+    if(choices[i].checked){
+      choice = choices[i].value;
+      correct++; }} 
+    pos++;
+   
+    renderQuestion();
+    }
+window.addEventListener("load", renderQuestion,false);
+      
+    </script>
+<h2 id='test_status'>op</h2>
+<div id="test">welcome</div>
+<marquee>&copy;HurtleGeo2023</marquee>
+</body>
+</html>
+
